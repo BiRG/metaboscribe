@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>MetaboScribe</title>
+        <meta name="description" content="Graph and annotate spectra and metabolites">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#">MetaboScribe</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                        
+                            <li class="dropdown">
+       							<a href="#about" class="dropdown-toggle" data-toggle="dropdown">About</a>
+       							<ul class="dropdown-menu">
+								    <li><h5>MetaboScribe</h5></li>
+								    <li class="divider"></li>
+								    <li>
+									    <p>
+								    		MetaboScribe is a community driven annotation system that facilitates peer-review 
+								    		of <a href="//drive.google.com" target="_blank">Google Drive</a> hosted repositories. 
+								    		Publicly available files can be loaded to demonstrate data visualization.
+								    	</p>
+								    </li>
+								    <li class="divider"></li>
+								    <li><a href="#" class="load_sample_data">Load sample spectra data</a></li>
+							    </ul>
+                            </li>
+                            
+                            <li class="dropdown">
+    							<a href="#contact" class="dropdown-toggle" data-toggle="dropdown">Contact</a>
+	    						<ul class="dropdown-menu">
+	    							<li>
+	    								<p>
+	    									MetaboScribe is currently under heavy development. 
+	    									To discuss using it for your own data, please contact us.
+	    								</p>
+	    							</li>
+	    							<li class="divider"></li>
+	    							<li><a href="mailto:ejpharr@g.cofc.edu" target="_blank">Edward Pharr</a></li>
+	    							<li><a href="mailto:andersonp@cs.cofc.edu" target="_blank">Paul Anderson</a></li>
+	    						</ul>
+	    					</li>
+	    					
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">BiRG <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <p>The Data Science Research Group is a team working to 
+                                        develop algorithms and software to tackle some of the most 
+                                        challenging and interesting data intensive problems in the 
+                                        life sciences.</p>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <div class="pull-right">
+                            <a id="cofc_brand" class="brand " href="http://compsci.cofc.edu" target="_blank">
+						        <span class="small-caps">College</span> of <span class="small-caps">Charleston</span>
+        					</a>
+                        </div>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+        
+            <div id="graph-and-metabolites" class="row">
+			
+			    <div class="span9">
+				    <div id="placeholder" style="width: 550px;height: 300px;"></div>
+			    </div>
+			
+			    <div class="span3 sidebar">
+			
+				    <div id="spectra">
+					    <a title="Spectra can be graphed or removed by clicking once they've been loaded from Google Drive">
+						    <strong>Spectra</strong>
+					    </a>
+					    <button id="graph" type="submit" class="btn btn-small pull-right" data-loading-text="Loading...">
+						    <i class="icon-cloud-download icon"></i> Load
+					    </button>
+					    <div id="spectra_panel">
+						    <ul>
+							    <li>No spectra loaded</li>
+						    </ul>
+					    </div>
+				    </div> <!-- spectra -->
+				
+				    <div id="metabolites">
+					    <hr />
+					    <a title="Metabolites may be scaled by clicking the +/- buttons">
+						    <strong>Metabolites</strong>
+					    </a>
+					    <div class="btn-group pull-right">
+						    <button class="btn btn-small" id="graph_metabolite">
+							    <i class="icon-cloud-download icon"></i> Load
+						    </button>
+						    <button class="btn btn-small" id="zoom-in">
+							    <i class="icon-plus icon"></i>
+						    </button>
+						    <button class="btn btn-small" id="zoom-out">
+							    <i class="icon-minus icon"></i>
+						    </button>
+					    </div>
+					    <div id="metabolites_panel">
+						    <ul>
+							    <li>No metabolites loaded</li>
+						    </ul>
+					    </div>
+				    </div><!-- metabolites -->
+				
+				    <div id="annotations">
+					    <hr />
+					    <a title="double-click an annotation to edit">
+						    <strong>Annotations</strong>
+					    </a>
+					    <div class="btn-group pull-right">
+						    <a id="annotation_actions" class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#">
+							    Actions <icon class="icon-caret-down"></icon>
+						    </a>
+						    <ul class="dropdown-menu">
+							    <li><a id="load_annotations"><i class="icon-cloud-download"></i> Load</a></li>
+							    <li><a id="save_annotations"><i class="icon-save"></i> Save</a></li>
+						    </ul>
+					    </div>
+					    <br><br>
+					    <div id="annotations_panel">
+						    <ul class="context-menu-annotations"></ul>
+					    </div>
+				    </div> <!-- annotations -->
+				
+			    </div>
+			
+		    </div><!-- /graph-and-metabolites (main div) -->
+            
+            <hr>
+
+            <footer>
+            <!--
+		        <div id="saving" class="pull-right alert">Talking to MetaboScribe</div>
+		    -->
+		        <p>
+			        <a class="load_sample_data" href="#">Try MetaboScribe With Sample Data</a>
+		        </p>
+		        <p>
+			        <a href="http://screencast.com/t/g1t1kla9" target="_blank">Screencast of MetaboScribe in use</a>
+		        </p>
+		        <p>
+			        <a title="MetaboScribe Documentation" href="http://prezi.com/qdvzbnsrxcu4/glims-documentation/" target="_blank"> Brief MetaboScribe Tutorial</a>
+			        powered by 
+			        <a href="http://prezi.com">Prezi</a>
+		        </p>
+            </footer>
+                
+        </div> <!-- /container -->
+        
+        <!-- templates -->
+        {% raw %}
+        <script type="text/template" id="annotation-template">
+		    <div class="annotation_view">
+			    <label>{{ left }}, {{ right }}, {{ label }}</label>
+		    </div>
+		    <div class="annotation_edit">
+			    <input class="edit" value="{{ left }}, {{ right }}, {{ label }}">
+			    <i class="icon icon-remove annotation_remove action_icon"></i>
+		    </div>
+    	</script>
+    	{% endraw %}
+    	<!-- /templates -->
+    	
+    	<!-- scripts -->
+    	<script src="https://www.google.com/jsapi"></script>
+    	<script src="https://apis.google.com/js/client.js?onload=OnLoadCallback"></script>
+    	
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="js/vendor/flot/jquery.flot.js"></script>
+        <script src="js/vendor/flot/jquery.flot.navigate.js"></script>
+        <script src="js/vendor/flot/jquery.flot.selection.js"></script>
+        <script src="js/vendor/flot/jquery.flot.resize.js"></script>
+        <script src="js/vendor/flot/jquery.flot.autoscale.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/vendor/lodash-1.3.1.js"></script>
+        <script type="text/javascript">_.templateSettings = {interpolate : /\{\{(.+?)\}\}/g};</script>
+        <script src="js/vendor/backbone-1.0.0.js"></script>
+        
+        <script src="js/plugins.js"></script>
+        <script src="js/config.js"></script>
+        <!--
+        <script src="js/models/annotation.js"></script>
+        <script src="js/models/spectrum.js"></script>
+        
+        <script src="js/collections/annotations.js"></script>
+        
+        <script src="js/views/annotation_view.js"></script>
+        <script src="js/views/annotations_view.js"></script>
+        <script src="js/views/spectra_view.js"></script>
+        <script src="js/views/spectrum_view.js"></script>
+        <script src="js/views/spectra_graph.js"></script>
+        <script src="js/views/metaboscribe_view.js"></script>
+        
+        <script src="js/router.js"></script>
+        <script src="js/main.js"></script>
+        use old js for now
+        -->
+        <script src="js/export.js"></script>
+        <!--
+        Might be interesting to see our stats one day
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+        -->
+    </body>
+</html>

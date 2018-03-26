@@ -1,0 +1,120 @@
+
+/* ==========================================================================
+   custom styles
+   ========================================================================== */
+
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #2F4F4F;
+	margin: 1em 0;
+	padding: 0;
+}
+#placeholder {
+	background: white;
+	padding: 10px;
+}
+.annotation_edit {
+	display: none;
+}
+#annotations_panel {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+div.sidebar ul {
+	list-style-type: none;
+	margin-left: 2px;
+}
+.dropdown-menu {
+	min-width: 220px;
+}
+.dropdown-menu h5 {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.dropdown-menu p {
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#cofc_brand {
+	font-family: Goudy;
+	color: rgb(102, 0, 0);
+}
+.small-caps {			
+	font-variant: small-caps;
+}
+.sidebar > div > a:hover {
+	color: #08c;
+	text-decoration: none;
+}
+.action_icon:hover {
+	cursor: pointer;
+}
+#annotation_view {
+	width: auto;
+}
+body { 
+    margin: 30px; 
+} 
+div#main { 
+    margin: auto; 
+} 
+#action-pane { 
+    width: 1000px; 
+} 
+button { 
+    margin-top: 2px; 
+    margin-bottom: 2px; 
+    margin-right: 2px; 
+    margin-left: 10px; 
+} 
+ul { 
+    list-style-type: none; 
+} 
+#graph-and-metabolites { 
+      
+} 
+/** 
+#placeholder { 
+    float: left; 
+    width: 1000px; 
+    height: 700px; 
+}*/ 
+#metabolites_parents { 
+    float: left; 
+    margin-left: 30px; 
+} 
+#parents { 
+    margin: auto; 
+} 
+div.val { 
+    margin-left: 30px; 
+} 
+div.file { 
+    margin-left: 30px; 
+} 
+div.inline { 
+    float: left; 
+} 
+.clearBoth { 
+    clear: both; 
+} 
+.prezi-player { 
+    width: 550px; 
+} 
+.prezi-player-links { 
+    text-align: center; 
+} 
+#placeholder .button { 
+    position: absolute; 
+    cursor: pointer; 
+}  
+#placeholder div.button { 
+    font-size: smaller; 
+    color: #999; 
+    background-color: #eee; 
+    padding: 2px; 
+}
+
